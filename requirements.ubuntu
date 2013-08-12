@@ -1,8 +1,0 @@
-python-dev
-python-pip
-python-virtualenv
-postgresql
-postgresql-server-dev-9.1
-psycopg2
-libpq-dev
-
