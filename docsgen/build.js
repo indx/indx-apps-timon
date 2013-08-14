@@ -46,15 +46,16 @@
 		},
 		render: function () {
 			var that = this,
-				html = '';
+				html = '',
+				outputDir = this.config.outputDirectory;
 
-			deleteFolderRecursive('./build');
-			ncp('./template', './build', function (err) {
+			deleteFolderRecursive(outputDir);
+			ncp('./template', outputDir, function (err) {
 				if (err) { throw err; }
 				mu.compileAndRender('index.mu', that.app.object).on('data', function (dat) {
 					html += dat.toString();
 				}).on('end', function () {
-					fs.writeFile('./build/index.html', html, function (err) {
+					fs.writeFile(outputDir + '/index.html', html, function (err) {
 						if (err) { throw err; }
 					});
 				});
